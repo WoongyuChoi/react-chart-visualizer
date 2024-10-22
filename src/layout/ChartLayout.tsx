@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import BarChartComparison from "../chart/BarChartComparison";
 import { Chart } from "chart.js";
+import BarChartAnother from "../chart/BarChartAnother";
 
-const ChartLayout = () => {
+const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
@@ -25,7 +26,11 @@ const ChartLayout = () => {
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <BarChartComparison chartRef={chartRef} />
+      {selectedChart === 1 ? (
+        <BarChartComparison chartRef={chartRef} />
+      ) : (
+        <BarChartAnother chartRef={chartRef} />
+      )}
     </div>
   );
 };
