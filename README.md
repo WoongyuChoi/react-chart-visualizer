@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# React Chart Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is built using React, TypeScript, and Vite, with Chart.js for chart visualizations. It serves as a tool for visualizing data using interactive charts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: Typed superset of JavaScript that provides static typing.
+- **Vite**: A fast build tool for modern web projects.
+- **Chart.js**: A powerful JavaScript library used to create beautiful charts.
+- **react-chartjs-2**: React wrapper for Chart.js, making it easier to integrate charts within React components.
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
+    ```bash
+    https://github.com/WoongyuChoi/react-chart-visualizer.git
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Navigate into the project directory:
+    ```bash
+    cd react-chart-visualizer
+    ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+5. To build for production:
+    ```bash
+    npm run build
+    ```
+
+## Usage
+
+This project uses `react-chartjs-2` to integrate Chart.js charts into React components. You can create various types of charts like bar, line, pie, and more.
+
+Example of how to use a bar chart in the project:
+
+```tsx
+import { Bar } from 'react-chartjs-2';
+
+const data = {
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgba(75, 192, 192, 1)',
+      borderWidth: 1,
+    },
+  ],
+};
+
+const options = {
+  scales: {
+    y: {
+      beginAtZero: true,
     },
   },
-})
+};
+
+export function BarChart() {
+  return <Bar data={data} options={options} />;
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## License
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+This project is licensed under the MIT License.
