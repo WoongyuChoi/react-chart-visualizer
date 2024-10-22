@@ -4,6 +4,7 @@ import BarChartComparison from "../chart/BarChartComparison";
 import BarChartNegative from "../chart/BarChartNegative";
 import WaterfallChart from "../chart/WaterfallChart";
 import AreaChart from "../chart/AreaChart";
+import MixedChart from "../chart/MixedChart";
 
 const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
   const chartRef = useRef<Chart | null>(null);
@@ -27,7 +28,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
       case 3:
         return <WaterfallChart chartRef={chartRef} />;
       case 4:
-        return <div>BarChart 4</div>;
+        return <MixedChart chartRef={chartRef} />;
       case 5:
         return <AreaChart chartRef={chartRef} />;
       default:
