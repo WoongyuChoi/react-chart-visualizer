@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ChartLayout from "./ChartLayout";
 import ButtonLayout from "./ButtonLayout";
+import ChartLayout from "./ChartLayout";
 
 const MainLayout = () => {
   const [selectedChart, setSelectedChart] = useState(1);
@@ -21,7 +21,7 @@ const MainLayout = () => {
       <div style={{ marginBottom: "20px" }}>
         <ButtonLayout setSelectedChart={setSelectedChart} />
       </div>
-      
+
       <ChartLayout selectedChart={selectedChart} />
     </div>
   );

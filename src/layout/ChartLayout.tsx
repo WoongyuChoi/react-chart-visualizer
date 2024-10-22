@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import BarChartComparison from "../chart/BarChartComparison";
 import { Chart } from "chart.js";
-import BarChartAnother from "../chart/BarChartAnother";
+import { useEffect, useRef } from "react";
+import BarChartComparison from "../chart/BarChartComparison";
+import BarChartNegative from "../chart/BarChartNegative";
 
 const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
   const chartRef = useRef<Chart | null>(null);
@@ -16,6 +16,23 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
     };
   }, []);
 
+  const renderChart = () => {
+    switch (selectedChart) {
+      case 1:
+        return <BarChartComparison chartRef={chartRef} />;
+      case 2:
+        return <BarChartNegative chartRef={chartRef} />;
+      case 3:
+        return <div>BarChart 3</div>;
+      case 4:
+        return <div>BarChart 4</div>;
+      case 5:
+        return <div>BarChart 5</div>;
+      default:
+        return <div>차트를 선택해주세요.</div>;
+    }
+  };
+
   return (
     <div
       style={{
@@ -26,11 +43,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
       }}
     >
-      {selectedChart === 1 ? (
-        <BarChartComparison chartRef={chartRef} />
-      ) : (
-        <BarChartAnother chartRef={chartRef} />
-      )}
+      {renderChart()}
     </div>
   );
 };
