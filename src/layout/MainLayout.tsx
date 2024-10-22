@@ -13,17 +13,7 @@ const MainLayout = () => {
         padding: "20px",
       }}
     >
-      <div
-        style={{
-          width: "80%",
-          backgroundColor: "#FFFFFF",
-          borderRadius: "8px",
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-          padding: "30px",
-        }}
-      >
-        <ChartLayout />
-      </div>
+      <ChartLayout />
     </div>
   );
 };
