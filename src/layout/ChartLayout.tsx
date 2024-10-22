@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import BarChartComparison from "../chart/BarChartComparison";
 import BarChartNegative from "../chart/BarChartNegative";
 import WaterfallChart from "../chart/WaterfallChart";
+import AreaChart from "../chart/AreaChart";
 
 const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
   const chartRef = useRef<Chart | null>(null);
@@ -28,7 +29,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
       case 4:
         return <div>BarChart 4</div>;
       case 5:
-        return <div>BarChart 5</div>;
+        return <AreaChart chartRef={chartRef} />;
       default:
         return <div>차트를 선택해주세요.</div>;
     }
