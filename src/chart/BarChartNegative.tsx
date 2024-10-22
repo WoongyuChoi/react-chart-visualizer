@@ -1,6 +1,5 @@
 import { ChartOptions } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { formatNumberWithCommas } from "../utils/numberUtils";
 
 const data = {
   labels: ["KRW"],
@@ -28,6 +27,8 @@ const data = {
       },
       borderColor: "#FFB3BA",
       borderWidth: 2,
+      barThickness: 30, // 막대의 두께 조정
+      maxBarThickness: 30, // 막대의 최대 두께
     },
   ],
 };
@@ -50,11 +51,10 @@ const options: ChartOptions<"bar"> = {
       ticks: {
         stepSize: 250000000000,
         callback: function (value) {
-          return value
-            .toLocaleString("ko-KR", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            });
+          return value.toLocaleString("ko-KR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
         },
       },
     },
