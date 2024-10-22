@@ -2,6 +2,7 @@ import { Chart } from "chart.js";
 import { useEffect, useRef } from "react";
 import BarChartComparison from "../chart/BarChartComparison";
 import BarChartNegative from "../chart/BarChartNegative";
+import WaterfallChart from "../chart/WaterfallChart";
 
 const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
   const chartRef = useRef<Chart | null>(null);
@@ -23,7 +24,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
       case 2:
         return <BarChartNegative chartRef={chartRef} />;
       case 3:
-        return <div>BarChart 3</div>;
+        return <WaterfallChart chartRef={chartRef} />;
       case 4:
         return <div>BarChart 4</div>;
       case 5:
