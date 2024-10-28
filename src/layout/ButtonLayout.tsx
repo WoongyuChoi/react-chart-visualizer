@@ -32,17 +32,17 @@ const ButtonLayout = ({ setSelectedChart }: ButtonLayoutProps) => {
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(SelectedTitle.STACKED_BAR_CHART)}
+        onClick={() => setSelectedChart(SelectedTitle.MIXED_CHART)}
         style={{ backgroundColor: "#4A8DE2" }}
       >
-        Stacked Bar Chart
+        Mixed Chart
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(SelectedTitle.MIXED_CHART)}
+        onClick={() => setSelectedChart(SelectedTitle.AREA_CHART)}
         style={{ backgroundColor: "#2E7AD9" }}
       >
-        Mixed Chart
+        Area Chart
       </button>
     </>
   );

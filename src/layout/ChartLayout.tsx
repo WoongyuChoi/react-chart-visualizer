@@ -28,9 +28,9 @@ const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
         return <BarChartNegative chartRef={chartRef} />;
       case SelectedTitle.WATERFALL_CHART:
         return <WaterfallChart chartRef={chartRef} />;
-      case SelectedTitle.STACKED_BAR_CHART:
-        return <MixedChart chartRef={chartRef} />;
       case SelectedTitle.MIXED_CHART:
+        return <MixedChart chartRef={chartRef} />;
+      case SelectedTitle.AREA_CHART:
         return <AreaChart chartRef={chartRef} />;
       default:
         return <div>차트를 선택해주세요.</div>;
