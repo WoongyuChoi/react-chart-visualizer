@@ -20,15 +20,15 @@ const data = {
           0,
           chartArea.bottom
         );
-        gradient.addColorStop(0, "#1E257E"); // 그라데이션 시작 색상
-        gradient.addColorStop(1, "#9EA4FD"); // 그라데이션 끝 색상
+        gradient.addColorStop(0, "#015F8C"); // 그라데이션 시작 색상
+        gradient.addColorStop(1, "#151C26"); // 그라데이션 끝 색상
 
         return gradient;
       },
       borderColor: "#FFB3BA",
       borderWidth: 2,
-      barThickness: 30, // 막대의 두께 조정
-      maxBarThickness: 30, // 막대의 최대 두께
+      barThickness: 60, // 막대의 두께 조정
+      // maxBarThickness: 30, // 막대의 최대 두께
     },
   ],
 };

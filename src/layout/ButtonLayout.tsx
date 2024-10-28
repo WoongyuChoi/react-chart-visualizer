@@ -1,5 +1,6 @@
 import React from "react";
 import "../Button.css";
+import { SelectedTitle } from "../data/SelectedConstant";
 
 interface ButtonLayoutProps {
   setSelectedChart: (chart: number) => void;
@@ -10,38 +11,38 @@ const ButtonLayout = ({ setSelectedChart }: ButtonLayoutProps) => {
     <>
       <button
         className="button-layout"
-        onClick={() => setSelectedChart(1)}
-        style={{ backgroundColor: "#FFB3BA" }}
+        onClick={() => setSelectedChart(SelectedTitle.BAR_CHART_1)}
+        style={{ backgroundColor: "#A3C4F3" }}
       >
-        막대 차트 1
+        Bar Chart 1
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(2)}
-        style={{ backgroundColor: "#FFDFBA" }}
+        onClick={() => setSelectedChart(SelectedTitle.BAR_CHART_2)}
+        style={{ backgroundColor: "#85B1ED" }}
       >
-        막대 차트 2
+        Bar Chart 2
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(3)}
-        style={{ backgroundColor: "#FFFFBA" }}
+        onClick={() => setSelectedChart(SelectedTitle.WATERFALL_CHART)}
+        style={{ backgroundColor: "#66A0E8" }}
       >
-        워터폴 차트
+        Waterfall Chart
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(4)}
-        style={{ backgroundColor: "#BAFFC9" }}
+        onClick={() => setSelectedChart(SelectedTitle.STACKED_BAR_CHART)}
+        style={{ backgroundColor: "#4A8DE2" }}
       >
-        누적막대 & 선 차트
+        Stacked Bar Chart
       </button>
       <button
         className="button-layout margin-left"
-        onClick={() => setSelectedChart(5)}
-        style={{ backgroundColor: "#BAE1FF" }}
+        onClick={() => setSelectedChart(SelectedTitle.MIXED_CHART)}
+        style={{ backgroundColor: "#2E7AD9" }}
       >
-        영역 차트
+        Mixed Chart
       </button>
     </>
   );

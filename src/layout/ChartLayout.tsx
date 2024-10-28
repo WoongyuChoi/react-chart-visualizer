@@ -5,8 +5,9 @@ import BarChartNegative from "../chart/BarChartNegative";
 import WaterfallChart from "../chart/WaterfallChart";
 import AreaChart from "../chart/AreaChart";
 import MixedChart from "../chart/MixedChart";
+import { SelectedTitle } from "../data/SelectedConstant";
 
-const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
+const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
@@ -21,15 +22,15 @@ const ChartLayout = ({ selectedChart }: { selectedChart: number }) => {
 
   const renderChart = () => {
     switch (selectedChart) {
-      case 1:
+      case SelectedTitle.BAR_CHART_1:
         return <BarChartComparison chartRef={chartRef} />;
-      case 2:
+      case SelectedTitle.BAR_CHART_2:
         return <BarChartNegative chartRef={chartRef} />;
-      case 3:
+      case SelectedTitle.WATERFALL_CHART:
         return <WaterfallChart chartRef={chartRef} />;
-      case 4:
+      case SelectedTitle.STACKED_BAR_CHART:
         return <MixedChart chartRef={chartRef} />;
-      case 5:
+      case SelectedTitle.MIXED_CHART:
         return <AreaChart chartRef={chartRef} />;
       default:
         return <div>차트를 선택해주세요.</div>;

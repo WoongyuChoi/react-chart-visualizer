@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import ButtonLayout from "./ButtonLayout";
 import ChartLayout from "./ChartLayout";
+import { SelectedTitle } from "../data/SelectedConstant";
 
 const MainLayout = () => {
-  const [selectedChart, setSelectedChart] = useState(1);
+  const [selectedChart, setSelectedChart] = useState<SelectedTitle>(
+    SelectedTitle.BAR_CHART_1
+  );
 
   return (
     <div

@@ -12,7 +12,7 @@ const data: ChartData<"line"> = {
         0.08,
       ], // Y축 데이터
       fill: true, // 영역을 채우기 위해 'fill' 설정
-      backgroundColor: "rgba(75, 192, 192, 0.2)", // 영역 색상
+      backgroundColor: "rgba(7, 96, 140, 0.2)", // 영역 색상
       borderColor: "rgba(75, 192, 192, 1)", // 선 색상
       borderWidth: 2, // 선 두께
       tension: 0.4, // 곡선 효과 추가
