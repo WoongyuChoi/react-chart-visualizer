@@ -33,7 +33,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
       case SelectedTitle.AREA_CHART:
         return <AreaChart chartRef={chartRef} />;
       default:
-        return <div>차트를 선택해주세요.</div>;
+        return <div>Please select a chart.</div>;
     }
   };
 
