@@ -48,7 +48,7 @@ const ChartLayout = ({
         backgroundColor: "#FFFFFF",
         borderRadius: "8px",
         padding: "30px",
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
       }}
     >
       <>{renderChart()}</>

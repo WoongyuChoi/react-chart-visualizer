@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Loading from "../common/Loading";
 import { SelectedTitle } from "../data/SelectedConstant";
 import ButtonLayout from "./ButtonLayout";
 import ChartLayout from "./ChartLayout";
@@ -16,16 +17,16 @@ const MainLayout = () => {
         alignItems: "center",
         justifyContent: "center",
         height: "80vh",
-        width: "600px",
+        width: "700px",
         backgroundColor: "#EAEAEA",
         padding: "20px",
       }}
     >
-      <div style={{ marginBottom: "20px" }}>
-        <ButtonLayout setSelectedChart={setSelectedChart} />
-      </div>
+      <ButtonLayout setSelectedChart={setSelectedChart} />
 
       <ChartLayout selectedChart={selectedChart} />
+
+      <Loading />
     </div>
   );
 };
