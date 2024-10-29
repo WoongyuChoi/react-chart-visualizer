@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { SelectedTitle } from "../data/SelectedConstant";
 import ButtonLayout from "./ButtonLayout";
 import ChartLayout from "./ChartLayout";
-import { SelectedTitle } from "../data/SelectedConstant";
 
 const MainLayout = () => {
-  const [selectedChart, setSelectedChart] = useState<SelectedTitle>(
-    SelectedTitle.BAR_CHART_1
+  const [selectedChart, setSelectedChart] = useState<SelectedTitle | undefined>(
+    SelectedTitle.BAR_CHART_1 || undefined
   );
 
   return (
