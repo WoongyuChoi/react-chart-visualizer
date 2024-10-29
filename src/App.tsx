@@ -5,19 +5,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from ".";
 import "./App.css";
 import ChartProvider from "./provider/ChartProvider";
+import UsePlayingProvider from "./provider/UsePlayingProvider";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <ChartProvider>
-        <BrowserRouter>
-          <SpeedInsights />
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
-      </ChartProvider>
+      <UsePlayingProvider>
+        <ChartProvider>
+          <BrowserRouter>
+            <SpeedInsights />
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </BrowserRouter>
+        </ChartProvider>
+      </UsePlayingProvider>
     </QueryClientProvider>
   );
 }

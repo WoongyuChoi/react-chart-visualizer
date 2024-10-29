@@ -1,22 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
+import { usePlaying } from "./usePlayingContext";
 
 const useDynamicData = (
   initialData: any,
   updateDataFn: (data: any) => any,
   queryKey: string
 ) => {
-  const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
+  const { isPlaying } = usePlaying();
 
   const { data: data, refetch } = useQuery({
     queryKey: [queryKey],
     queryFn: () => {
       return Promise.resolve(updateDataFn(initialData));
     },
-    refetchInterval: isVisible ? 5000 : false, // 차트가 보일 때만 갱신
-    enabled: isVisible && !firstLoad, // 초기에는 비활성화
+    refetchInterval: isVisible && isPlaying ? 5000 : false, // 차트가 보일 때만 갱신
+    enabled: isVisible && isPlaying && !firstLoad, // 초기에는 비활성화
     initialData: initialData, // 초기 데이터 설정
   });
 
@@ -45,7 +47,7 @@ const useDynamicData = (
     return () => {
       observer.disconnect();
     };
-  }, [refetch]);
+  }, [isPlaying, refetch]);
 
   useEffect(() => {
     if (isVisible) {

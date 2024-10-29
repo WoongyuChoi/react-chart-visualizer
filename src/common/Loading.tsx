@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 import LoadingLottie from "../assets/lottie/loading.json";
+import { usePlaying } from "../hook/usePlayingContext";
 
 export default function Loading() {
   const [mounted, setMounted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const { isPlaying, toggleIsPlaying } = usePlaying();
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
     return null;
   }
-
-  const togglePlay = () => setIsPlaying((prev) => !prev); // 재생/정지 토글 함수
 
   return (
     <div
@@ -24,7 +23,7 @@ export default function Loading() {
         marginTop: "5px",
         cursor: "pointer",
       }}
-      onClick={togglePlay}
+      onClick={toggleIsPlaying}
     >
       <p
         style={{
