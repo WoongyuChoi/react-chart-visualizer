@@ -10,15 +10,19 @@ const BarChartComparison = ({
 }: {
   chartRef: React.RefObject<any>;
 }) => {
-  const { data, containerRef } = useDynamicData(initialData, (prevData) => ({
-    ...prevData,
-    datasets: prevData.datasets.map((dataset: { data: any[] }) => ({
-      ...dataset,
-      data: dataset.data.map(() =>
-        Math.floor(Math.random() * (15000000 - 1000000 + 1) + 1000000)
-      ),
-    })),
-  }));
+  const { data, containerRef } = useDynamicData(
+    initialData,
+    (prevData) => ({
+      ...prevData,
+      datasets: prevData.datasets.map((dataset: { data: any[] }) => ({
+        ...dataset,
+        data: dataset.data.map(() =>
+          Math.floor(Math.random() * (15000000 - 1000000 + 1) + 1000000)
+        ),
+      })),
+    }),
+    "BarChartComparison"
+  );
 
   return (
     <div ref={containerRef}>

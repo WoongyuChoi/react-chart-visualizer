@@ -1,13 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 
-const useDynamicData = (initialData: any, updateDataFn: (data: any) => any) => {
+const useDynamicData = (
+  initialData: any,
+  updateDataFn: (data: any) => any,
+  queryKey: string
+) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [firstLoad, setFirstLoad] = useState(true);
 
   const { data: data, refetch } = useQuery({
-    queryKey: ["data"],
+    queryKey: [queryKey],
     queryFn: () => {
       return Promise.resolve(updateDataFn(initialData));
     },
@@ -45,7 +49,7 @@ const useDynamicData = (initialData: any, updateDataFn: (data: any) => any) => {
 
   useEffect(() => {
     if (isVisible) {
-      console.log("5초마다 데이터 갱신 중...", data);
+      console.log(`${queryKey} 5초마다 데이터 갱신 중...`, data);
     }
   }, [data]);
 
