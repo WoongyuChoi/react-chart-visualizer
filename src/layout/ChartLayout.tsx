@@ -1,13 +1,17 @@
 import { Chart } from "chart.js";
 import { useEffect, useRef } from "react";
+import AreaChart from "../chart/AreaChart";
 import BarChartComparison from "../chart/BarChartComparison";
 import BarChartNegative from "../chart/BarChartNegative";
-import WaterfallChart from "../chart/WaterfallChart";
-import AreaChart from "../chart/AreaChart";
 import MixedChart from "../chart/MixedChart";
+import WaterfallChart from "../chart/WaterfallChart";
 import { SelectedTitle } from "../data/SelectedConstant";
 
-const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
+const ChartLayout = ({
+  selectedChart,
+}: {
+  selectedChart: SelectedTitle | undefined;
+}) => {
   const chartRef = useRef<Chart | null>(null);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
       case SelectedTitle.AREA_CHART:
         return <AreaChart chartRef={chartRef} />;
       default:
-        return <div>차트를 선택해주세요.</div>;
+        return <div>Please select a chart.</div>;
     }
   };
 
@@ -44,10 +48,10 @@ const ChartLayout = ({ selectedChart }: { selectedChart: SelectedTitle }) => {
         backgroundColor: "#FFFFFF",
         borderRadius: "8px",
         padding: "30px",
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
       }}
     >
-      {renderChart()}
+      <>{renderChart()}</>
     </div>
   );
 };

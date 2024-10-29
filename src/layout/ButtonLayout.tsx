@@ -8,7 +8,12 @@ interface ButtonLayoutProps {
 
 const ButtonLayout = ({ setSelectedChart }: ButtonLayoutProps) => {
   return (
-    <>
+    <div
+      style={{
+        marginTop: "15px",
+        marginBottom: "15px",
+      }}
+    >
       <button
         className="button-layout"
         onClick={() => setSelectedChart(SelectedTitle.BAR_CHART_1)}
@@ -44,7 +49,7 @@ const ButtonLayout = ({ setSelectedChart }: ButtonLayoutProps) => {
       >
         Area Chart
       </button>
-    </>
+    </div>
   );
 };
 
