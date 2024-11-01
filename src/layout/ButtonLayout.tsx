@@ -3,7 +3,7 @@ import "../Button.css";
 import { SelectedTitle } from "../data/SelectedConstant";
 
 interface ButtonLayoutProps {
-  setSelectedChart: (chart: number) => void;
+  setSelectedChart: (chart: SelectedTitle) => void;
 }
 
 const ButtonLayout = ({ setSelectedChart }: ButtonLayoutProps) => {
