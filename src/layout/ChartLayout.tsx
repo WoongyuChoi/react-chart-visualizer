@@ -1,10 +1,5 @@
 import { Chart } from "chart.js";
-import { useEffect, useRef } from "react";
-import AreaChart from "../chart/AreaChart";
-import BarChartComparison from "../chart/BarChartComparison";
-import BarChartNegative from "../chart/BarChartNegative";
-import MixedChart from "../chart/MixedChart";
-import WaterfallChart from "../chart/WaterfallChart";
+import React, { Suspense, useEffect, useRef } from "react";
 import { SelectedTitle } from "../data/SelectedConstant";
 
 const ChartLayout = ({
@@ -24,20 +19,20 @@ const ChartLayout = ({
     };
   }, []);
 
+  const chartMap = {
+    BAR_CHART_1: React.lazy(() => import("../chart/BarChartComparison")),
+    BAR_CHART_2: React.lazy(() => import("../chart/BarChartNegative")),
+    WATERFALL_CHART: React.lazy(() => import("../chart/WaterfallChart")),
+    MIXED_CHART: React.lazy(() => import("../chart/MixedChart")),
+    AREA_CHART: React.lazy(() => import("../chart/AreaChart")),
+  };
+
   const renderChart = () => {
-    switch (selectedChart) {
-      case SelectedTitle.BAR_CHART_1:
-        return <BarChartComparison chartRef={chartRef} />;
-      case SelectedTitle.BAR_CHART_2:
-        return <BarChartNegative chartRef={chartRef} />;
-      case SelectedTitle.WATERFALL_CHART:
-        return <WaterfallChart chartRef={chartRef} />;
-      case SelectedTitle.MIXED_CHART:
-        return <MixedChart chartRef={chartRef} />;
-      case SelectedTitle.AREA_CHART:
-        return <AreaChart chartRef={chartRef} />;
-      default:
-        return <div>Please select a chart.</div>;
+    if (selectedChart) {
+      const Chart = chartMap[selectedChart];
+      return <Chart chartRef={chartRef} />;
+    } else {
+      return <div>Please select a chart.</div>;
     }
   };
 
@@ -51,7 +46,9 @@ const ChartLayout = ({
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
       }}
     >
-      <>{renderChart()}</>
+      <Suspense fallback={<div>Loading...</div>}>
+        <>{renderChart()}</>
+      </Suspense>
     </div>
   );
 };
