@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { usePlaying } from "./usePlayingContext";
+import usePlayingStore from "../store/playing";
 
 const useDynamicData = (
   initialData: any,
@@ -10,7 +11,8 @@ const useDynamicData = (
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
-  const { isPlaying } = usePlaying();
+  // const { isPlaying } = usePlaying();
+  const { isPlaying } = usePlayingStore();
 
   const { data: data, refetch } = useQuery({
     queryKey: [queryKey],

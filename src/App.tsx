@@ -11,16 +11,16 @@ function App() {
   const [queryClient] = useState(() => new QueryClient());
   return (
     <QueryClientProvider client={queryClient}>
-      <UsePlayingProvider>
-        <ChartProvider>
-          <BrowserRouter>
-            <SpeedInsights />
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </BrowserRouter>
-        </ChartProvider>
-      </UsePlayingProvider>
+      {/* <UsePlayingProvider> */}
+      <ChartProvider>
+        <BrowserRouter>
+          <SpeedInsights />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </ChartProvider>
+      {/* </UsePlayingProvider> */}
     </QueryClientProvider>
   );
 }

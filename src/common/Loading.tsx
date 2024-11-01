@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 import LoadingLottie from "../assets/lottie/loading.json";
 import { usePlaying } from "../hook/usePlayingContext";
+import usePlayingStore from "../store/playing";
 
 export default function Loading() {
   const [mounted, setMounted] = useState(false);
-  const { isPlaying, toggleIsPlaying } = usePlaying();
+  // const { isPlaying, toggleIsPlaying } = usePlaying();
+  const { isPlaying, toggleIsPlaying } = usePlayingStore();
 
   useEffect(() => setMounted(true), []);
 
