@@ -1,5 +1,16 @@
 # React Chart Visualizer
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/WoongyuChoi/react-chart-visualizer/blob/main/LICENSE)
+![Platform](https://img.shields.io/badge/platform-web-blue)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/WoongyuChoi/react-chart-visualizer)
+![Last Commit](https://img.shields.io/github/last-commit/WoongyuChoi/react-chart-visualizer.svg)
+
+<figure align="center">
+    <img src="https://private-user-images.githubusercontent.com/138280607/382231701-fd4bb4dc-6221-4ec8-8e1a-5008d03e9126.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzA0NTA5MTUsIm5iZiI6MTczMDQ1MDYxNSwicGF0aCI6Ii8xMzgyODA2MDcvMzgyMjMxNzAxLWZkNGJiNGRjLTYyMjEtNGVjOC04ZTFhLTUwMDhkMDNlOTEyNi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEwMVQwODQzMzVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mZWJjOTc3ODYyMTIwMDg1ODc3OTkzYTZmYTI1NDQ4MWY4MWE1YjY2NjRkYTAxZjczZDFmMTQ4MmI4ZDY0MGFmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.al_LKL-UaW8pg3yyZCoOVcgU5eqyOL0-G976HPMT3tU" width="80%"/>
+</figure>
+
+## Overview
+
 This project is built using React, TypeScript, and Vite, with Chart.js for chart visualizations. It serves as a tool for visualizing data using interactive charts.
 
 ## Features
