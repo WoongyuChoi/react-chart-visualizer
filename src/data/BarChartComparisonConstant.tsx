@@ -2,7 +2,7 @@ import { ChartOptions } from "chart.js";
 import { formatNumberWithCommas } from "../utils/numberUtils";
 
 export const data = {
-  labels: ["2023 Q1", "2023 Q2", "2023 Q3", "2023 Q4", "2024 Q1"],
+  labels: ["2023 Q4", "2024 Q1", "2024 Q2", "2024 Q3", "2024 Q4"],
   datasets: [
     {
       label: "Available Capital",
