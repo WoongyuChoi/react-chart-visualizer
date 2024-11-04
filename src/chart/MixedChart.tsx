@@ -1,10 +1,34 @@
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import React from "react";
+import React, { useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { data as initialData, options } from "../data/MixedChartConstant";
 import useDynamicData from "../hook/useDynamicData";
+import useThemeStore from "../store/theme";
+
+const getBackgroundColor = (isDarkMode: boolean, index: number) => {
+  const darkModeColors = [
+    "rgba(255, 255, 102, 0.8)",
+    "rgba(204, 153, 255, 0.8)",
+    "rgba(102, 255, 255, 0.8)",
+    "rgba(0, 255, 153, 0.8)",
+    "rgba(255, 51, 153, 0.8)",
+    "rgba(255, 153, 102, 0.8)",
+  ];
+
+  const lightModeColors = [
+    "rgba(251, 248, 173, 0.6)",
+    "rgba(183, 152, 197, 0.6)",
+    "rgba(184, 239, 239, 0.6)",
+    "rgba(183, 236, 192, 0.6)",
+    "rgba(251, 173, 176, 0.6)",
+    "rgba(251, 209, 173, 0.6)",
+  ];
+
+  return isDarkMode ? darkModeColors[index] : lightModeColors[index];
+};
 
 const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
+  const isDarkMode = useThemeStore((state) => state.isDarkMode);
   const { data, containerRef } = useDynamicData(
     initialData,
     (prevData) => {
@@ -13,7 +37,7 @@ const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
       return {
         ...prevData,
         datasets: prevData.datasets.map(
-          (dataset: { type: string; data: any[] }, idx: any) => {
+          (dataset: { type: string; data: any[] }, index: any) => {
             if (dataset.type === "line") {
               return {
                 ...dataset,
@@ -38,6 +62,7 @@ const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
               return {
                 ...dataset,
                 data: newData,
+                backgroundColor: getBackgroundColor(isDarkMode, index),
               };
             }
           }
@@ -46,6 +71,13 @@ const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
     },
     "MixedChart"
   );
+
+  useEffect(() => {
+    data.datasets = data.datasets.map((dataset: any, index: number) => ({
+      ...dataset,
+      backgroundColor: getBackgroundColor(isDarkMode, index),
+    }));
+  }, [isDarkMode]);
 
   return (
     <div ref={containerRef}>
