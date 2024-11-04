@@ -1,5 +1,5 @@
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { data as initialData, options } from "../data/MixedChartConstant";
 import useDynamicData from "../hook/useDynamicData";
@@ -29,7 +29,7 @@ const getBackgroundColor = (isDarkMode: boolean, index: number) => {
 
 const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
-  const { data, containerRef } = useDynamicData(
+  const { data: dynamicData, containerRef } = useDynamicData(
     initialData,
     (prevData) => {
       let totalData = Array(prevData.labels.length).fill(0); // 각 index 합계를 위한 배열 초기화
@@ -71,11 +71,21 @@ const MixedChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
     },
     "MixedChart"
   );
+  const [data, setData] = useState(dynamicData);
 
   useEffect(() => {
-    data.datasets = data.datasets.map((dataset: any, index: number) => ({
-      ...dataset,
-      backgroundColor: getBackgroundColor(isDarkMode, index),
+    setData(dynamicData);
+  }, [dynamicData]);
+
+  useEffect(() => {
+    setData((prevData: any) => ({
+      ...prevData,
+      datasets: prevData.datasets.map(
+        (dataset: { data: any[] }, index: number) => ({
+          ...dataset,
+          backgroundColor: getBackgroundColor(isDarkMode, index),
+        })
+      ),
     }));
   }, [isDarkMode]);
 

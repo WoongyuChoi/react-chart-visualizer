@@ -15,7 +15,7 @@ const ThemeLayout = () => {
       <button
         onClick={toggleTheme}
         style={{
-          fontSize: "1.5rem",
+          fontSize: `clamp(0.5rem, 1.5rem, 1.5vw)`,
           cursor: "pointer",
           padding: "0.5rem 1rem",
           border: "none",
