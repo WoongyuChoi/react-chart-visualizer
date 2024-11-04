@@ -6,7 +6,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/WoongyuChoi/react-chart-visualizer)
 
 <figure align="center">
-    <img src="https://github.com/user-attachments/assets/fd4bb4dc-6221-4ec8-8e1a-5008d03e9126" width="80%"/>
+    <img src="https://github.com/user-attachments/assets/7a59880f-f0fd-45cc-918b-b07caae027b0" width="80%"/>
 </figure>
 
 ## Overview
