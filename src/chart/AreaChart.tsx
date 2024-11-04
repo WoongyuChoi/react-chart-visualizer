@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { data as initialData, options } from "../data/AreaChartConstant";
 import useDynamicData from "../hook/useDynamicData";
@@ -12,7 +12,7 @@ const getBorderColor = (isDarkMode: boolean) =>
 
 const AreaChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
-  const { data, containerRef } = useDynamicData(
+  const { data: dynamicData, containerRef } = useDynamicData(
     initialData,
     (prevData) => {
       return {
@@ -29,12 +29,20 @@ const AreaChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
     },
     "AreaChart"
   );
+  const [data, setData] = useState(dynamicData);
 
   useEffect(() => {
-    data.datasets = data.datasets.map((dataset: { data: any[] }) => ({
-      ...dataset,
-      backgroundColor: getBackgroundColor(isDarkMode),
-      borderColor: getBorderColor(isDarkMode),
+    setData(dynamicData);
+  }, [dynamicData]);
+
+  useEffect(() => {
+    setData((prevData: any) => ({
+      ...prevData,
+      datasets: prevData.datasets.map((dataset: { data: any[] }) => ({
+        ...dataset,
+        backgroundColor: getBackgroundColor(isDarkMode),
+        borderColor: getBorderColor(isDarkMode),
+      })),
     }));
   }, [isDarkMode]);
 

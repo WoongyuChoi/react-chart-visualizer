@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   data as initialData,
@@ -20,7 +20,7 @@ const BarChartComparison = ({
   chartRef: React.RefObject<any>;
 }) => {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
-  const { data, containerRef } = useDynamicData(
+  const { data: dynamicData, containerRef } = useDynamicData(
     initialData,
     (prevData) => ({
       ...prevData,
@@ -36,14 +36,22 @@ const BarChartComparison = ({
     }),
     "BarChartComparison"
   );
+  const [data, setData] = useState(dynamicData);
 
   useEffect(() => {
-    data.datasets = data.datasets.map(
-      (dataset: { data: any[] }, index: number) => ({
-        ...dataset,
-        backgroundColor: getBackgroundColor(isDarkMode, index),
-      })
-    );
+    setData(dynamicData);
+  }, [dynamicData]);
+
+  useEffect(() => {
+    setData((prevData: any) => ({
+      ...prevData,
+      datasets: prevData.datasets.map(
+        (dataset: { data: any[] }, index: number) => ({
+          ...dataset,
+          backgroundColor: getBackgroundColor(isDarkMode, index),
+        })
+      ),
+    }));
   }, [isDarkMode]);
 
   return (

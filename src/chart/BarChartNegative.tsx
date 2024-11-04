@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { data as initialData, options } from "../data/BarChartNegativeConstant";
 import useDynamicData from "../hook/useDynamicData";
@@ -34,7 +34,7 @@ const getBackgroundColor = (isDarkMode: boolean) => {
 
 const BarChartNegative = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
   const isDarkMode = useThemeStore((state) => state.isDarkMode);
-  const { data, containerRef } = useDynamicData(
+  const { data: dynamicData, containerRef } = useDynamicData(
     initialData,
     (prevData) => ({
       ...prevData,
@@ -49,10 +49,19 @@ const BarChartNegative = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
     "BarChartNegative"
   );
 
+  const [data, setData] = useState(dynamicData);
+
   useEffect(() => {
-    data.datasets = data.datasets.map((dataset: { data: any[] }) => ({
-      ...dataset,
-      backgroundColor: getBackgroundColor(isDarkMode),
+    setData(dynamicData);
+  }, [dynamicData]);
+
+  useEffect(() => {
+    setData((prevData: any) => ({
+      ...prevData,
+      datasets: prevData.datasets.map((dataset: { data: any[] }) => ({
+        ...dataset,
+        backgroundColor: getBackgroundColor(isDarkMode),
+      })),
     }));
   }, [isDarkMode]);
 
