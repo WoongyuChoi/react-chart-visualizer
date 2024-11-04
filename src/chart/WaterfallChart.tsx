@@ -1,10 +1,28 @@
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import React from "react";
+import React, { useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { data as initialData, options } from "../data/WaterfallChartConstant";
 import useDynamicData from "../hook/useDynamicData";
+import useThemeStore from "../store/theme";
 
+const getBackgroundColor = (
+  isDarkMode: boolean,
+  value: number[],
+  isLast: boolean
+) => {
+  if (isLast) {
+    return isDarkMode ? "#E1A3E9" : "#B798C5";
+  }
+  return value[1] >= value[0]
+    ? isDarkMode
+      ? "#00FFC3"
+      : "#B8EFEF"
+    : isDarkMode
+    ? "#FF579A"
+    : "#FBADB0";
+};
 const WaterfallChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
+  const isDarkMode = useThemeStore((state) => state.isDarkMode);
   const { data, containerRef } = useDynamicData(
     initialData,
     (prevData) => {
@@ -52,6 +70,13 @@ const WaterfallChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
             return result;
           }
         }),
+        backgroundColor: dataset.data.map((value: number[], index: number) =>
+          getBackgroundColor(
+            isDarkMode,
+            value,
+            index === dataset.data.length - 1
+          )
+        ),
       }));
 
       return {
@@ -61,6 +86,15 @@ const WaterfallChart = ({ chartRef }: { chartRef: React.RefObject<any> }) => {
     },
     "WaterfallChart"
   );
+
+  useEffect(() => {
+    data.datasets = data.datasets.map((dataset: { data: any[] }) => ({
+      ...dataset,
+      backgroundColor: dataset.data.map((value: number[], index: number) =>
+        getBackgroundColor(isDarkMode, value, index === dataset.data.length - 1)
+      ),
+    }));
+  }, [isDarkMode]);
 
   return (
     <div ref={containerRef}>

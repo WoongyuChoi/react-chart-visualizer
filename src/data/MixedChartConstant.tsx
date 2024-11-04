@@ -2,7 +2,7 @@ import { ChartData, ChartOptions } from "chart.js";
 import { formatNumberWithCommas } from "../utils/numberUtils";
 
 export const data: ChartData<any> = {
-  labels: ["202208", "202209", "202210", "202211", "202212"], // X축 값
+  labels: ["2024.08", "2024.09", "2024.10", "2024.11", "2024.12"], // X축 값
   datasets: [
     // 아래쪽에 쌓일 데이터부터 작성
     {
